@@ -1,0 +1,45 @@
+.category_container {
+    margin: 50px;
+    background-color: #00BCD4;
+    padding: 50px;
+    box-shadow: 0px -2px 24px #9b9b9b;
+}
+.category_container h3{
+text-align: center;
+}
+.category_container p{
+    text-align: center;
+}
+.category_container input{
+    width: 80%;
+    height: 51px;
+    border: 0;
+    border-radius: 6px;
+    padding: 0px 20px;
+    font-size: 18px;
+}
+.category_container button{
+    height: 49px;
+    border: 0;
+    background-color: #000000;
+    border-radius: 5px;
+    color: #fff;
+    padding: 0px 20px;
+    margin-left: 20px;
+}
+.post-buttons .btn{
+    padding:10px 20px;
+    font-weight: bold;
+}
+.post-buttons  {
+    text-align: center;
+}
+.post-buttons .add-post{
+background-color: #6f13c1;
+}
+.post-buttons .back-post{
+    background-color: #FF9800;
+}
+.img-preview{
+    height: 250px;
+}

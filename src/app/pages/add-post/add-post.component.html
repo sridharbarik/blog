@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row clearfix text-center">
+        <div class="col-lg-12">
+        <h3 class="post-heading">{{formStatus}} Post</h3>
+        <p class="post-cnt">You can add your new post here</p>
+    </div>
+    </div>
+    <div class="post-form">
+        <ng-container *ngIf="postForm">
+            <form [formGroup]="postForm" (ngSubmit)="onPostForm()">
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group w-100">
+                        <label for="exampleInputEmail1">Title</label>
+                        <input type="txt" 
+                        class="form-control" 
+                        (keyup)="onTitleChange($event)" 
+                        formControlName="title"
+                        [ngClass]="{'is-invalid':Fc['title'].touched && Fc['title'].invalid}">
+                        <div *ngIf="Fc['title'].errors?.required">
+                        <div class="alert alert-danger" *ngIf="Fc['title'].touched && Fc['title'].invalid">Title is required.</div>
+                    </div>
+                    <div *ngIf="Fc['title'].errors?.minlength">
+                        <div class="alert alert-danger" *ngIf="Fc['title'].touched && Fc['title'].invalid">Title must be 10 character long.</div>
+                    </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Permalink</label>
+                        <input type="text" class="form-control" name="permalink" formControlName="permalink">
+                        <div *ngIf="Fc['permalink'].errors?.required">
+                            <div class="alert alert-danger" *ngIf="Fc['title'].touched && Fc['title'].invalid">Pemalink is required.</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Excerpt</label>
+                       <textarea class="form-control" formControlName="excerpt"></textarea>
+                       <div *ngIf="Fc['excerpt'].errors?.required">
+                        <div class="alert alert-danger" *ngIf="Fc['excerpt'].touched && Fc['excerpt'].invalid">Excerpt is required.</div>
+                    </div>
+                    <div *ngIf="Fc['excerpt'].errors?.minlength">
+                        <div class="alert alert-danger" *ngIf="Fc['excerpt'].touched && Fc['excerpt'].invalid">Excerpt must be 50 character long.</div>
+                    </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group w-100">
+                            <label for="exampleInputEmail1">Please select a post category</label>
+                            <select class="form-control" formControlName="category">
+                                <option value="">Please select a post category</option>
+                                <option *ngFor="let category of postCategory" value="{{category.id}}-{{category.category}}">{{category.category}}</option>
+                            </select>
+                            <div *ngIf="Fc['category'].errors?.required">
+                                <div class="alert alert-danger" *ngIf="Fc['category'].touched && Fc['category'].invalid">Please select a post category.</div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Post Image</label>
+                            <img [src]="imgSrc" class="form-control img-fluid img-preview">
+                            <input type="file" class="form-control" accept="image/*" (change)="onPreview($event)" formControlName="postImage">
+                            <div *ngIf="Fc['postImage'].errors?.required"></div>
+                                <div class="alert alert-danger" *ngIf="Fc['postImage'].touched && Fc['postImage'].invalid">Post image is required.</div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                
+                <div class="row">
+                    <div class="form-group w-100">
+                        <label>Content</label>
+                       <angular-editor placeholder="Add your contnt here.." formControlName="content"></angular-editor>
+                       <div *ngIf="Fc['content'].errors?.required">
+                        <div class="alert alert-danger" *ngIf="Fc['content'].touched && Fc['content'].invalid">Content is required.</div>
+                    </div>
+                      </div>
+                </div>
+                <div class="row text-center">
+                    <div class="post-buttons">
+                        <button type="submit" class="btn btn-success add-post">{{formStatus}} Post</button>
+                        <button type="button" class="btn btn-warning back-post" routerLink="/new-post">Back to Post</button>
+                    </div>
+                </div>
+            </form>
+        </ng-container>
+        
+    </div>
+</div>

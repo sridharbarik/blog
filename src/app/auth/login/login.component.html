@@ -1,0 +1,54 @@
+<div class="login-section">
+    <div class="container d-flex align-items-center justify-content-center min-vh-100">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">Login</h5>
+                <p>Please Login to your domain account to post a new blogpost 
+                    <br> Email : <strong>abc@gmail.com</strong>
+                    <br> Password : <strong>123456</strong>
+                </p>
+                <form #loginForm = ngForm (ngSubmit)="onSubmit(loginForm.value)">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" 
+                        class="form-control" 
+                        id="email" 
+                        placeholder="Enter email"
+                        name="email"
+                        #email = 'ngModel'
+                        ngModel 
+                        required
+                        email
+                        [ngClass]="{'is-invalid':email.touched && email.invalid}">
+                        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+                            <div *ngIf="email.errors?.required">Email is not empty</div>
+                            <div *ngIf="email.errors?.email">Please enter a valid email address</div>
+                            </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input 
+                        type="password" 
+                        class="form-control" 
+                        id="password" 
+                        placeholder="Password" 
+                        required
+                        name="password"
+                        #password = 'ngModel'
+                        ngModel 
+                        required
+                        
+                        [ngClass]="{'is-invalid':password.touched && password.invalid}">
+                        <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+                            
+                            Password is not empty</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+                </form>
+            
+            </div>
+        </div>
+    </div>
+
+
+</div>

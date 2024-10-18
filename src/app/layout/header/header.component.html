@@ -1,0 +1,15 @@
+<ng-container *ngIf="isLoggedin$ | async">
+<nav class="navbar navbar-dark" style="background-color: #00BCD4;">
+  
+    <a class="navbar-brand" routerLink="/">BLOG ADMIN</a>
+   
+      <p class="text-white">{{emaildata}} <span><button style="background-color: #6f13c1;" class="btn btn-success" (click)="onlogout()">Logout</button></span></p>
+  
+    
+  
+    <div class="collapse navbar-collapse" id="navbarsExample01">
+      
+    
+    </div>
+  </nav>
+</ng-container>

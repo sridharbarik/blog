@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="category_container">
+        <h3 class="text-white">All Blog Posts</h3>
+        <p class="text-white">From Where you can Manage your posts</p>
+        <div class="post-buttons">
+        <button type="submit" class="btn btn-success add-post" routerLink="/new-post/add-post">Save Post</button>
+        <button type="button" class="btn btn-warning back-post" routerLink="/">Back to Dashboard</button>
+    </div>
+        </div>
+        <div class="category-allpost">
+            <table class="table table-bordered border-primary">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col" style="width: 200px;">Post Image</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Excerpt</th>
+                    <th scope="col">Category</th>
+                    <th scope="col" style="width: 100px;">Date</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let post of postInfo;let i = index">
+                    <td>{{i+1}}</td>
+                    <td><img [src]="post.postImgPath"></td>
+                    <td>{{post.title}}</td>
+                    <td>{{post.excerpt}}</td>
+                    <td>{{post.category?.category}}</td>
+                    <td>{{post.createAt | timestampToDate | date:'medium' }}</td>
+                    <td>
+                        <button class="btn btn-warning" routerLink="/new-post/add-post" [queryParams]="{id:post.id}">Edit</button>
+                        <button class="btn btn-danger mx-2" (click)="onDelete(post.postImgPath,post.id)">Delete</button>
+
+                        <button class="btn btn-success mx-2" *ngIf="!post.isFeatured" (click)="onFeatured(post.id,true)">Mark Featured</button>
+                        <button class="btn btn-info mx-2" *ngIf="post.isFeatured" (click)="onFeatured(post.id,false)">Remove Featured</button>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+        </div>
+
+
+
+

@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="category_container">
+        <h3>{{formStatus}} Categories</h3>
+        <p>You can add new Categories Here</p>
+        <form #f="ngForm" (ngSubmit)="onSave(f)">
+            <input type="text" 
+            placeholder="Enter Category" 
+            name="category"
+            #newCategory="ngModel" 
+            [(ngModel)]="formCategory"
+            required 
+            [ngClass]="{'is-invalid': newCategory.touched && newCategory.invalid}">
+            <div class="alert alert-danger" style="width: 80%;
+    display: inline-block;" *ngIf="newCategory.touched && newCategory.invalid">Category field is required</div>
+            <button [disabled]="f.invalid">{{formStatus}} Category</button>
+        </form>
+    </div>
+    <div class="category_value">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Category</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of categories, let i = index">
+                <td>{{i+1}}</td>
+                <td>{{category.category}}</td>
+                <td>
+                    <button type="button" class="btn btn-info" (click)="onEdit(category.category)">Edit</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteData(category.id)">Delete</button></td>
+              </tr>
+            
+            </tbody>
+          </table>
+        </div>
+    </div>
+       
+    </div>
+</div>

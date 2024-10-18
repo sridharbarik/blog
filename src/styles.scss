@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import 'ngx-toastr/toastr';
+.main{
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0px;
+}
+body{
+    font-family: "Roboto", sans-serif;
+    overflow-x: hidden;
+}
